@@ -1,4 +1,4 @@
-package com.estudos.alura.api.doctor;
+package com.estudos.alura.api.record.doctor;
 
 public enum MedicalSpecialties {
 
@@ -6,5 +6,5 @@ public enum MedicalSpecialties {
     CARDIOLOGIA,
     GINECOLOGIA,
     DERMATOLOGIA;
-    
+
 }

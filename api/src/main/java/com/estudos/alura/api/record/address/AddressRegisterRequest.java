@@ -1,9 +1,9 @@
-package com.estudos.alura.api.address;
+package com.estudos.alura.api.record.address;
 
-public record Address(
+public record AddressRegisterRequest(
         String addressLine1,
         String addressLine2,
-        String District,
+        String district,
         String zipCode,
         String city,
         String state) {

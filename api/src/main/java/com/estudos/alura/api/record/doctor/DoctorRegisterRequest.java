@@ -1,11 +1,11 @@
-package com.estudos.alura.api.doctor;
+package com.estudos.alura.api.record.doctor;
 
-import com.estudos.alura.api.address.Address;
+import com.estudos.alura.api.record.address.AddressRegisterRequest;
 
 public record DoctorRegisterRequest(
         String name,
         String email,
         String crm,
         MedicalSpecialties medicalSpecialties,
-        Address address) {
+        AddressRegisterRequest address) {
 }
