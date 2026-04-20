@@ -31,9 +31,9 @@ public class DoctorController {
                         doctorRegisterRequest.address().addressLine1(),
                         doctorRegisterRequest.address().addressLine2(),
                         doctorRegisterRequest.address().district(),
-                        doctorRegisterRequest.address().city(),
+                        doctorRegisterRequest.address().zipCode(),
                         doctorRegisterRequest.address().state(),
-                        doctorRegisterRequest.address().zipCode()
+                        doctorRegisterRequest.address().city()
                 )));
 
     }
