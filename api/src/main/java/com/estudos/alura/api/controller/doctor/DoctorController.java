@@ -4,6 +4,7 @@ import com.estudos.alura.api.dto.AddressRegisterRequest;
 import com.estudos.alura.api.dto.DoctorRegisterRequest;
 import com.estudos.alura.api.jpa.DoctorJPA;
 import com.estudos.alura.api.repository.DoctorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class DoctorController {
     private DoctorRepository doctorRepository;
 
     @PostMapping
-    public void registerDoctor(@RequestBody DoctorRegisterRequest doctorRegisterRequest){
+    public void registerDoctor(@RequestBody @Valid DoctorRegisterRequest doctorRegisterRequest){
 
         System.out.println(doctorRegisterRequest.toString());
 
