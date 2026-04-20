@@ -26,6 +26,7 @@ public class DoctorController {
         doctorRepository.save(new DoctorJPA(null,
                 doctorRegisterRequest.name(),
                 doctorRegisterRequest.email(),
+                doctorRegisterRequest.phoneNumber(),
                 doctorRegisterRequest.crm(),
                 doctorRegisterRequest.medicalSpecialties(),
                 new AddressRegisterRequest(

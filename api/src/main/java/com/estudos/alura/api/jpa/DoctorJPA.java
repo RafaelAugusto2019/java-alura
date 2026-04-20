@@ -4,7 +4,7 @@ import com.estudos.alura.api.dto.AddressRegisterRequest;
 import com.estudos.alura.api.enums.MedicalSpecialties;
 import jakarta.persistence.*;
 
-@Table(name = "doctor")
+@Table(name = "doctors")
 @Entity(name = "doctor")
 public class DoctorJPA {
 
@@ -13,6 +13,7 @@ public class DoctorJPA {
     private Long id;
     private String name;
     private String email;
+    private String phoneNumber;
     private String crm;
     @Enumerated(EnumType.STRING)
     private MedicalSpecialties medicalSpecialties;
@@ -23,10 +24,11 @@ public class DoctorJPA {
 
     }
 
-    public DoctorJPA(Long id, String name, String email, String crm, MedicalSpecialties medicalSpecialties, AddressRegisterRequest address) {
+    public DoctorJPA(Long id, String name, String email, String phoneNumber, String crm, MedicalSpecialties medicalSpecialties, AddressRegisterRequest address) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.crm = crm;
         this.medicalSpecialties = medicalSpecialties;
         this.address = address;
@@ -50,6 +52,14 @@ public class DoctorJPA {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setEmail(String email) {
