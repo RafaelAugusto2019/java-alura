@@ -1,4 +1,4 @@
-package com.estudos.alura.api.record.doctor;
+package com.estudos.alura.api.enums;
 
 public enum MedicalSpecialties {
 

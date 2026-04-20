@@ -1,5 +1,8 @@
-package com.estudos.alura.api.record.address;
+package com.estudos.alura.api.dto;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public record AddressRegisterRequest(
         String addressLine1,
         String addressLine2,

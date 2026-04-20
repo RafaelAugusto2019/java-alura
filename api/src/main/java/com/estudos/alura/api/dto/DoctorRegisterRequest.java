@@ -1,6 +1,6 @@
-package com.estudos.alura.api.record.doctor;
+package com.estudos.alura.api.dto;
 
-import com.estudos.alura.api.record.address.AddressRegisterRequest;
+import com.estudos.alura.api.enums.MedicalSpecialties;
 
 public record DoctorRegisterRequest(
         String name,
