@@ -7,6 +7,9 @@ import com.estudos.alura.api.jpa.DoctorJPA;
 import com.estudos.alura.api.repository.DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,8 +42,8 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<DoctorRegisterResponse> getAllDoctors(){
-        return doctorRepository.findAll().stream().map(DoctorRegisterResponse::new).toList();
+    public Page<DoctorRegisterResponse> getAllDoctors(@PageableDefault(size = 2, sort = "name") Pageable pageable){
+        return doctorRepository.findAll(pageable).map(DoctorRegisterResponse::new);
     }
 
 }
