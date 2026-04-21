@@ -2,14 +2,14 @@ package com.estudos.alura.api.controller.doctor;
 
 import com.estudos.alura.api.dto.AddressRegisterRequest;
 import com.estudos.alura.api.dto.DoctorRegisterRequest;
+import com.estudos.alura.api.dto.DoctorRegisterResponse;
 import com.estudos.alura.api.jpa.DoctorJPA;
 import com.estudos.alura.api.repository.DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("doctor")
@@ -20,8 +20,6 @@ public class DoctorController {
 
     @PostMapping
     public void registerDoctor(@RequestBody @Valid DoctorRegisterRequest doctorRegisterRequest){
-
-        System.out.println(doctorRegisterRequest.toString());
 
         doctorRepository.save(new DoctorJPA(null,
                 doctorRegisterRequest.name(),
@@ -38,6 +36,11 @@ public class DoctorController {
                         doctorRegisterRequest.address().city()
                 )));
 
+    }
+
+    @GetMapping
+    public List<DoctorRegisterResponse> getAllDoctors(){
+        return doctorRepository.findAll().stream().map(DoctorRegisterResponse::new).toList();
     }
 
 }
