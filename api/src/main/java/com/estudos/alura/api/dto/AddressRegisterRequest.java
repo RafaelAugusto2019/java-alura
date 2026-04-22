@@ -22,4 +22,5 @@ public record AddressRegisterRequest(
         @NotBlank
         @Column(name = "city")
         String city) {
+
 }

@@ -1,8 +1,10 @@
 package com.estudos.alura.api.jpa;
 
 import com.estudos.alura.api.dto.AddressRegisterRequest;
+import com.estudos.alura.api.dto.DoctorUpdateRequest;
 import com.estudos.alura.api.enums.MedicalSpecialties;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 
 @Table(name = "doctors")
 @Entity(name = "doctor")
@@ -32,6 +34,18 @@ public class DoctorJPA {
         this.crm = crm;
         this.medicalSpecialties = medicalSpecialties;
         this.address = address;
+    }
+
+    public void updateInformation(@Valid DoctorUpdateRequest doctorUpdateRequest) {
+        if (!doctorUpdateRequest.name().isBlank())
+            this.name = doctorUpdateRequest.name();
+
+        if (!doctorUpdateRequest.phoneNumber().isBlank())
+            this.phoneNumber = doctorUpdateRequest.phoneNumber();
+
+        if (doctorUpdateRequest.addressRegisterRequest() != null)
+           this.address = doctorUpdateRequest.addressRegisterRequest();
+
     }
 
     public Long getId() {
@@ -89,5 +103,6 @@ public class DoctorJPA {
     public void setAddress(AddressRegisterRequest address) {
         this.address = address;
     }
+
 
 }
