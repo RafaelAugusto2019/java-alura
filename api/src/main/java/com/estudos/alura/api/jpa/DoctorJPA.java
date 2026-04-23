@@ -17,6 +17,7 @@ public class DoctorJPA {
     private String email;
     private String phoneNumber;
     private String crm;
+    private boolean enable;
     @Enumerated(EnumType.STRING)
     private MedicalSpecialties medicalSpecialties;
     @Embedded
@@ -26,12 +27,13 @@ public class DoctorJPA {
 
     }
 
-    public DoctorJPA(Long id, String name, String email, String phoneNumber, String crm, MedicalSpecialties medicalSpecialties, AddressRegisterRequest address) {
+    public DoctorJPA(Long id, String name, String email, String phoneNumber, String crm, boolean enable, MedicalSpecialties medicalSpecialties, AddressRegisterRequest address) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.crm = crm;
+        this.enable = enable;
         this.medicalSpecialties = medicalSpecialties;
         this.address = address;
     }
@@ -104,5 +106,8 @@ public class DoctorJPA {
         this.address = address;
     }
 
+    public void setEnableFalse() {
+        this.enable = false;
+    }
 
 }

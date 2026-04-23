@@ -30,6 +30,7 @@ public class DoctorController {
                 doctorRegisterRequest.email(),
                 doctorRegisterRequest.phoneNumber(),
                 doctorRegisterRequest.crm(),
+                true,
                 doctorRegisterRequest.medicalSpecialties(),
                 new AddressRegisterRequest(
                         doctorRegisterRequest.address().addressLine1(),
@@ -44,7 +45,7 @@ public class DoctorController {
 
     @GetMapping
     public Page<DoctorRegisterResponse> getAllDoctors(@PageableDefault(size = 2, sort = "name") Pageable pageable){
-        return doctorRepository.findAll(pageable).map(DoctorRegisterResponse::new);
+        return doctorRepository.findAllByEnableIsTrue(pageable).map(DoctorRegisterResponse::new);
     }
 
     @PutMapping("/{id}")
@@ -53,6 +54,15 @@ public class DoctorController {
 
         DoctorJPA doctorJPA = doctorRepository.getReferenceById(id);
         doctorJPA.updateInformation(doctorUpdateRequest);
+
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deleteDoctor(@PathVariable Long id){
+
+        DoctorJPA doctorJPA = doctorRepository.getReferenceById(id);
+        doctorJPA.setEnableFalse();
 
     }
 
