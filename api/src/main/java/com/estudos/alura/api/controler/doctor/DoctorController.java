@@ -1,11 +1,11 @@
-package com.estudos.alura.api.doctor.controller;
+package com.estudos.alura.api.controler.doctor;
 
-import com.estudos.alura.api.doctor.dto.AddressRegisterRequest;
-import com.estudos.alura.api.doctor.dto.DoctorRegisterRequest;
-import com.estudos.alura.api.doctor.dto.DoctorRegisterResponse;
-import com.estudos.alura.api.doctor.dto.DoctorUpdateRequest;
-import com.estudos.alura.api.doctor.repository.DoctorJPA;
-import com.estudos.alura.api.doctor.repository.DoctorRepository;
+import com.estudos.alura.api.dto.address.AddressRegisterRequest;
+import com.estudos.alura.api.dto.doctor.DoctorRegisterRequest;
+import com.estudos.alura.api.dto.doctor.DoctorRegisterResponse;
+import com.estudos.alura.api.dto.doctor.DoctorUpdateRequest;
+import com.estudos.alura.api.repository.doctor.DoctorJPA;
+import com.estudos.alura.api.repository.doctor.DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

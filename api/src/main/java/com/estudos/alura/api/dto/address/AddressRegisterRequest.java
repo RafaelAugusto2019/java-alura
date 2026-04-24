@@ -1,4 +1,4 @@
-package com.estudos.alura.api.doctor.dto;
+package com.estudos.alura.api.dto.address;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

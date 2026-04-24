@@ -1,5 +1,6 @@
-package com.estudos.alura.api.doctor.dto;
+package com.estudos.alura.api.dto.doctor;
 
+import com.estudos.alura.api.dto.address.AddressRegisterRequest;
 import com.estudos.alura.api.enums.MedicalSpecialties;
 import jakarta.persistence.Column;
 import jakarta.validation.Valid;

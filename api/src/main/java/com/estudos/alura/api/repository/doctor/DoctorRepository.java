@@ -1,4 +1,4 @@
-package com.estudos.alura.api.doctor.repository;
+package com.estudos.alura.api.repository.doctor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
