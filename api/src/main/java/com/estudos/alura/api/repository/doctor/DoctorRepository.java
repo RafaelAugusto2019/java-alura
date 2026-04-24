@@ -1,7 +1,5 @@
-package com.estudos.alura.api.repository;
+package com.estudos.alura.api.doctor.repository;
 
-import com.estudos.alura.api.dto.DoctorRegisterResponse;
-import com.estudos.alura.api.jpa.DoctorJPA;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

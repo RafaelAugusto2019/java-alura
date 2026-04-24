@@ -1,4 +1,4 @@
-package com.estudos.alura.api.dto;
+package com.estudos.alura.api.doctor.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 

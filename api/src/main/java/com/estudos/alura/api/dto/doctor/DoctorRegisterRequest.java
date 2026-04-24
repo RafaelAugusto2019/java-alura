@@ -1,4 +1,4 @@
-package com.estudos.alura.api.dto;
+package com.estudos.alura.api.doctor.dto;
 
 import com.estudos.alura.api.enums.MedicalSpecialties;
 import jakarta.persistence.Column;

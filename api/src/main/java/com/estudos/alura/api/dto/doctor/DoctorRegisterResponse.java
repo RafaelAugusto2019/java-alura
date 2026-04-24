@@ -1,7 +1,7 @@
-package com.estudos.alura.api.dto;
+package com.estudos.alura.api.doctor.dto;
 
 import com.estudos.alura.api.enums.MedicalSpecialties;
-import com.estudos.alura.api.jpa.DoctorJPA;
+import com.estudos.alura.api.doctor.repository.DoctorJPA;
 
 public record DoctorRegisterResponse(
         Long id,
