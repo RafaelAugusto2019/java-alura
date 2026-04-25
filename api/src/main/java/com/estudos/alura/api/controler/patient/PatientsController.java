@@ -1,14 +1,17 @@
 package com.estudos.alura.api.controler.patient;
 
 import com.estudos.alura.api.dto.patient.PatientRecordRequest;
+import com.estudos.alura.api.dto.patient.PatientRecordResponse;
 import com.estudos.alura.api.repository.patient.PatientJPA;
 import com.estudos.alura.api.repository.patient.PatientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("patients")
@@ -29,6 +32,12 @@ public class PatientsController {
                 patientRecordRequest.address()));
 
 
+    }
+
+    @GetMapping
+    public Page<PatientRecordResponse> getAllPatients(@PageableDefault(size = 2) Pageable pageable){
+        return patientRepository.findAll(pageable)
+                .map(PatientRecordResponse::new);
     }
 
 }
