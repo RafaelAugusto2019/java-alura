@@ -1,6 +1,7 @@
 package com.estudos.alura.api.repository.patient;
 
 import com.estudos.alura.api.dto.address.AddressRegisterRequest;
+import com.estudos.alura.api.dto.patient.PatientUpdateRequest;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -85,5 +86,11 @@ public class PatientJPA {
 
     public void setAddress(AddressRegisterRequest address) {
         this.address = address;
+    }
+
+    public void updateInformation(PatientUpdateRequest patientUpdateRequest) {
+        this.name = patientUpdateRequest.name();
+        this.phoneNumber = patientUpdateRequest.phoneNumber();
+        this.address =  patientUpdateRequest.address();
     }
 }
