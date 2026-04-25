@@ -3,6 +3,7 @@ package com.estudos.alura.api.controler.patient;
 import com.estudos.alura.api.dto.patient.PatientRecordRequest;
 import com.estudos.alura.api.dto.patient.PatientRecordResponse;
 import com.estudos.alura.api.dto.patient.PatientUpdateRequest;
+import com.estudos.alura.api.repository.doctor.DoctorJPA;
 import com.estudos.alura.api.repository.patient.PatientJPA;
 import com.estudos.alura.api.repository.patient.PatientRepository;
 import jakarta.validation.Valid;
@@ -38,8 +39,7 @@ public class PatientsController {
 
     @GetMapping
     public Page<PatientRecordResponse> getAllPatients(@PageableDefault(size = 2) Pageable pageable){
-        return patientRepository.findAll(pageable)
-                .map(PatientRecordResponse::new);
+        return patientRepository.findByEnableIsTrue(pageable).map(PatientRecordResponse::new);
     }
 
     @PutMapping("/{cpf}")
@@ -51,6 +51,13 @@ public class PatientsController {
 
     }
 
+    @DeleteMapping("/{cpf}")
+    @Transactional
+    public void deleteDoctor(@PathVariable String cpf){
 
+        PatientJPA patientJPA = patientRepository.getReferenceById(cpf);
+        patientJPA.setEnableFalse();
+
+    }
 
 }

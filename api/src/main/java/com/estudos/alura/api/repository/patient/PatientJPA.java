@@ -93,4 +93,8 @@ public class PatientJPA {
         this.phoneNumber = patientUpdateRequest.phoneNumber();
         this.address =  patientUpdateRequest.address();
     }
+
+    public void setEnableFalse() {
+        this.enable = false;
+    }
 }
