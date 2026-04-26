@@ -106,6 +106,14 @@ public class DoctorJPA {
         this.address = address;
     }
 
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
     public void setEnableFalse() {
         this.enable = false;
     }
