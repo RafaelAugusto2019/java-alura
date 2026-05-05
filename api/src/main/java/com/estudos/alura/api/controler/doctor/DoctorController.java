@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("doctors")
@@ -23,9 +25,9 @@ public class DoctorController {
 
     @PostMapping
     @Transactional
-    public void registerDoctor(@RequestBody @Valid DoctorRegisterRequest doctorRegisterRequest){
+    public ResponseEntity registerDoctor(@RequestBody @Valid DoctorRegisterRequest doctorRegisterRequest, UriComponentsBuilder uriComponentsBuilder){
 
-        doctorRepository.save(new DoctorJPA(null,
+        var doctorJPA = new DoctorJPA(null,
                 doctorRegisterRequest.name(),
                 doctorRegisterRequest.email(),
                 doctorRegisterRequest.phoneNumber(),
@@ -39,30 +41,42 @@ public class DoctorController {
                         doctorRegisterRequest.address().zipCode(),
                         doctorRegisterRequest.address().state(),
                         doctorRegisterRequest.address().city()
-                )));
+                ));
+
+        doctorRepository.save(doctorJPA);
+
+        var uri =  uriComponentsBuilder.path("/doctor/{id}").buildAndExpand(doctorJPA.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DoctorRegisterResponse(doctorJPA));
 
     }
 
     @GetMapping
-    public Page<DoctorRegisterResponse> getAllDoctors(@PageableDefault(size = 2, sort = "name") Pageable pageable){
-        return doctorRepository.findAllByEnableIsTrue(pageable).map(DoctorRegisterResponse::new);
+    public ResponseEntity<Page<DoctorRegisterResponse>> getAllDoctors(@PageableDefault(size = 2, sort = "name") Pageable pageable){
+        var page = doctorRepository.findAllByEnableIsTrue(pageable).map(DoctorRegisterResponse::new);
+
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public void updateDoctor(@PathVariable Long id, @RequestBody DoctorUpdateRequest doctorUpdateRequest){
+    public ResponseEntity<DoctorRegisterResponse> updateDoctor(@PathVariable Long id, @RequestBody DoctorUpdateRequest doctorUpdateRequest){
 
         DoctorJPA doctorJPA = doctorRepository.getReferenceById(id);
         doctorJPA.updateInformation(doctorUpdateRequest);
+
+        return ResponseEntity.ok(new DoctorRegisterResponse(doctorJPA));
 
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void deleteDoctor(@PathVariable Long id){
+    public ResponseEntity deleteDoctor(@PathVariable Long id){
 
         DoctorJPA doctorJPA = doctorRepository.getReferenceById(id);
         doctorJPA.setEnableFalse();
+
+        return ResponseEntity.noContent().build();
 
     }
 
