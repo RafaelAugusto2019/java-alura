@@ -1,6 +1,7 @@
 package com.estudos.alura.api.controler.doctor;
 
 import com.estudos.alura.api.dto.address.AddressRegisterRequest;
+import com.estudos.alura.api.dto.doctor.DoctorDetailRegisterResponse;
 import com.estudos.alura.api.dto.doctor.DoctorRegisterRequest;
 import com.estudos.alura.api.dto.doctor.DoctorRegisterResponse;
 import com.estudos.alura.api.dto.doctor.DoctorUpdateRequest;
@@ -56,6 +57,13 @@ public class DoctorController {
         var page = doctorRepository.findAllByEnableIsTrue(pageable).map(DoctorRegisterResponse::new);
 
         return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DoctorDetailRegisterResponse> getAllDoctors(@PathVariable Long id){
+        var doctorJPA = doctorRepository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DoctorDetailRegisterResponse(doctorJPA));
     }
 
     @PutMapping("/{id}")
