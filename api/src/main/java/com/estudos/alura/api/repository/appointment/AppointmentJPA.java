@@ -13,15 +13,17 @@ public class AppointmentJPA {
     private Long doctorId;
     private String date;
     private String time;
+    private boolean enable;
 
     public AppointmentJPA(){}
 
-    public AppointmentJPA(Long id, String cpf, Long doctorId, String date, String time) {
+    public AppointmentJPA(Long id, String cpf, Long doctorId, String date, String time, boolean enable) {
         this.id = id;
         this.cpf = cpf;
         this.doctorId = doctorId;
         this.date = date;
         this.time = time;
+        this.enable = enable;
     }
 
     public Long getId() {
@@ -62,6 +64,18 @@ public class AppointmentJPA {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public void setEnableFalse() {
+        this.enable = false;
     }
 
 }

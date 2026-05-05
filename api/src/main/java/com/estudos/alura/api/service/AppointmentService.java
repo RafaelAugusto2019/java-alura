@@ -45,9 +45,10 @@ public class AppointmentService {
             throw new RuntimeException("Please respect rules to schedule");
         }
 
-        if(!appointmentRepository.findAllByCpfAndDate(
+        if(!appointmentRepository.findAllByCpfAndDateAndEnable(
                 patient.getCpf(),
-                appointmentRequest.date()).isEmpty()){
+                appointmentRequest.date(),
+                true).isEmpty()){
 
             throw new RuntimeException("You already have an appointment scheduled to this day");
         }
@@ -61,7 +62,8 @@ public class AppointmentService {
                 appointmentRequest.patientCpf(),
                 appointmentRequest.doctorId(),
                 appointmentRequest.date(),
-                appointmentRequest.time()));
+                appointmentRequest.time(),
+                true));
 
     }
 

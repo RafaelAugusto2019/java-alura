@@ -18,7 +18,7 @@ public class DoctorScheduleRuleService {
         LocalTime appointmentStartHour = LocalTime.parse(time);
         LocalTime appointmentEndHour = LocalTime.parse(time).plusHours(1);
 
-        List<AppointmentJPA> appointments = appointmentRepository.findAllByDoctorId(doctorId);
+        List<AppointmentJPA> appointments = appointmentRepository.findAllByDoctorIdAndEnable(doctorId, true);
 
         for (AppointmentJPA appointment : appointments) {
             LocalTime hourStart = LocalTime.parse(appointment.getTime());
