@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 
 @Table(name = "doctors")
-@Entity(name = "doctor")
+@Entity(name = "Doctor")
 public class DoctorJPA {
 
     @Id

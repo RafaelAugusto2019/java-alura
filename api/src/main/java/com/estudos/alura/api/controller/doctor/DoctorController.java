@@ -1,4 +1,4 @@
-package com.estudos.alura.api.controler.doctor;
+package com.estudos.alura.api.controller.doctor;
 
 import com.estudos.alura.api.dto.address.AddressRegisterRequest;
 import com.estudos.alura.api.dto.doctor.DoctorDetailRegisterResponse;

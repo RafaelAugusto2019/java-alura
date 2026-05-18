@@ -3,7 +3,7 @@ package com.estudos.alura.api.repository.appointment;
 import jakarta.persistence.*;
 
 @Table(name = "appointments")
-@Entity(name = "appointments")
+@Entity(name = "Appointments")
 public class AppointmentJPA {
 
     @Id

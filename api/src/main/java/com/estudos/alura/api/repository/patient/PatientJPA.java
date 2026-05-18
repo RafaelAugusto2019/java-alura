@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Table(name = "patients")
-@Entity(name = "patients")
+@Entity(name = "Patients")
 public class PatientJPA {
 
     @Id

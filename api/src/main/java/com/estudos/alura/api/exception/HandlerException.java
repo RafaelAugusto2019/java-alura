@@ -18,7 +18,7 @@ public class HandlerException {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity exceptionMethodArgumentNotValid(MethodArgumentNotValidException exception){
         var listErrors = exception.getFieldErrors();
-        
+
         return ResponseEntity.badRequest().body(
                 listErrors.stream().map(ErrorResponse::new).toList());
     }

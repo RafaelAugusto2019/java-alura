@@ -1,7 +1,6 @@
-package com.estudos.alura.api.controler.appointments;
+package com.estudos.alura.api.controller.appointments;
 
 import com.estudos.alura.api.dto.appointment.AppointmentRequest;
-import com.estudos.alura.api.repository.appointment.AppointmentJPA;
 import com.estudos.alura.api.repository.appointment.AppointmentRepository;
 import com.estudos.alura.api.service.AppointmentService;
 import jakarta.validation.Valid;

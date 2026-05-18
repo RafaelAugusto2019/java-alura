@@ -1,9 +1,8 @@
-package com.estudos.alura.api.controler.patient;
+package com.estudos.alura.api.controller.patient;
 
 import com.estudos.alura.api.dto.patient.PatientRecordRequest;
 import com.estudos.alura.api.dto.patient.PatientRecordResponse;
 import com.estudos.alura.api.dto.patient.PatientUpdateRequest;
-import com.estudos.alura.api.repository.doctor.DoctorJPA;
 import com.estudos.alura.api.repository.patient.PatientJPA;
 import com.estudos.alura.api.repository.patient.PatientRepository;
 import jakarta.validation.Valid;
@@ -13,8 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("patients")
